@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Buenos días, mi amor 💗</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffe1eb, #fff1f5, #fce4ec);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    padding: 25px 12px;
+    color: #754454;
+}
+
+.card {
+    width: 100%;
+    max-width: 460px;
+    background: rgba(255,255,255,0.88);
+    border: 2px solid white;
+    border-radius: 30px;
+    padding: 30px 24px;
+    text-align: center;
+    box-shadow: 0 15px 45px #d88ba955;
+    position: relative;
+    z-index: 2;
+}
+
+.sun {
+    font-size: 45px;
+    animation: sun 3s infinite ease-in-out;
+}
+
+@keyframes sun {
+    50% {
+        transform: rotate(15deg) scale(1.12);
+    }
+}
+
+h1 {
+    color: #d65d87;
+    font-size: 32px;
+    margin: 12px 0;
+}
+
+.subtitle {
+    color: #b77a91;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* IMAGEN */
+
+.snoopy {
+    margin: 22px auto;
+    width: 230px;
+    height: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: float 3s infinite ease-in-out;
+}
+
+.snoopy img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 8px #d88ba955);
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+h2 {
+    color: #d65d87;
+    font-size: 22px;
+    margin: 15px 0;
+}
+
+.message {
+    line-height: 1.8;
+    font-size: 15px;
+    color: #795363;
+    margin: 15px 0;
+}
+
+/* BOTONES */
+
+button {
+    border: none;
+    padding: 14px 24px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ee91b0, #d85d8b);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px #d65d8750;
+    transition: .3s;
+    margin: 6px;
+}
+
+button:hover {
+    transform: scale(1.06);
+}
+
+/* CARTA */
+
+.letter {
+    display: none;
+    margin-top: 22px;
+    padding: 20px;
+    background: #fff3f7;
+    border-radius: 20px;
+    line-height: 1.8;
+    animation: appear .7s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.signature {
+    margin-top: 20px;
+    color: #d65d87;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* CORAZONES */
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    color: #ed8eae;
+    font-size: 20px;
+    animation: rise 7s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes rise {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.footer {
+    font-size: 12px;
+    color: #c18a9f;
+    margin-top: 25px;
+    line-height: 1.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MÚSICA DE FONDO -->
+
+<audio id="musica" loop>
+    <source src="Cuco - Piel Canela (Official Animated Video).mp3" type="audio/mpeg">
+    Tu navegador no puede reproducir este audio.
+</audio>
+
+<div class="card">
+
+    <div class="sun">☀️</div>
+
+    <h1>¡Buenos días, mi amor!</h1>
+
+    <p class="subtitle">
+        Hoy el sol salió, pero tú sigues siendo
+        mi luz favorita 💗
+    </p>
+
+    <!-- IMAGEN -->
+
+    <div class="snoopy">
+        <img src="rosas.jpg" alt="Snoopy para Alison">
+    </div>
+
+    <h2>Un mañanero para ti 🌷</h2>
+
+    <div class="message">
+        Espero que hayas descansado muy bonito,
+        que hayas despertado con una sonrisa
+        y que hoy tengas un día lleno de cosas bonitas.
+
+        <br><br>
+
+        Quiero que recuerdes que hay alguien
+        que piensa en ti desde que comienza el día
+        y que desea verte feliz siempre. 💗
+    </div>
+
+    <!-- BOTÓN DE CARTA -->
+
+    <button onclick="mostrarCarta()">
+        💌 Abre tu cartita
+    </button>
+
+    <!-- BOTÓN DE MÚSICA -->
+
+    <button onclick="reproducirMusica()" id="botonMusica">
+        🎵 Reproducir música
+    </button>
+
+    <!-- CARTA ROMÁNTICA -->
+
+    <div class="letter" id="carta">
+
+        <h2>Para la niña más especial 💕</h2>
+
+        Buenos días, Alison. ❤️
+
+        <br><br>
+
+        Si pudiera regalarte algo esta mañana,
+        sería la oportunidad de verte sonreír
+        y recordarte lo maravillosa que eres.
+
+        <br><br>
+
+        No importa qué tan ocupado sea el día,
+        quiero que sepas que siempre tendrás
+        un lugar muy especial en mi corazón.
+
+        <br><br>
+
+        Gracias por existir, por tus ocurrencias,
+        por tus bromas, por cada momento juntos
+        y por hacer que hasta los días normales
+        tengan algo bonito.
+
+        <br><br>
+
+        Ojalá Snoopy pudiera llevarte un enorme
+        ramo de flores y un abrazo lleno de cariño
+        de mi parte. 🌷
+
+        <br><br>
+
+        Nunca olvides lo mucho que te quiero.
+        Espero que hoy te pasen cosas tan bonitas
+        como las que tú haces sentir.
+
+        <div class="signature">
+            Con muchísimo cariño,
+            tu persona favorita. 💗
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Hecho con mucho amor, especialmente para ti.
+        <br>
+        Snoopy te desea un bonito día
+
+        <pre style="font-size:8px; line-height:1.1; margin-top:10px; overflow:hidden;">
+⠀⠀⠀⠀      ⠴⢦⣤⠖⣺⣍⠉⠉⠙⠲⣄⡀⠀⠀
+⠀⠀⠀⣠⠤⠖⠒⠒⠚⠉⠀⠀⠀⠀⠁⠀⠀⠀⠀ ⠙⢆
+⠀⡴⠋⠀⠀⠀⠀⠀⡀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠈⢣
+⡸⠀⠀⠀⢀⣀⣀⡈⠉⠁⠀⠈⠓⠂⠀⠀⠀⠀⠀⢀⣀⡈⢇
+⡧⠀⠀⠀⠀⠉⠋⢁⣴⣾⣿⣦⡀⠀⠀⠀⠀⢠⠀⣿⣿⣷⡜⡀
+⢱⠀⠀⠀⠀⠀⠀⣿⡿⣽⣾⣻⢿⣴⣾⣿⢿⣾⣸⣿⣿⣿⣧⢱
+⠀⠳⣄⠀⠀⢀⡤⠟⠛⠻⣾⣽⣟⣯⣷⢯⣿⣻⣿⣿⣿⣿⠇⡚
+⠀⠀⠈⠉⢲⠏⠀⠀⠀⠀⣸⡿⣾⣽⣾⠋⠀⠈⢣⣙⣋⡥⠞⠁
+⠀⠀⠀⠀⠈⢆⠀⠀⣠⢾⣟⣿⣳⢿⣞⠀⠀⠀⠀⡇
+⠀⠀⠀⠀⠀⠀⠉⠉⠀⠀⠈⠙⠛⠋⠉⢦⣀⣀⡴⠃
+        </pre>
+    </div>
+
+</div>
+
+<script>
+
+// MOSTRAR Y OCULTAR CARTA
+
+function mostrarCarta() {
+
+    const carta = document.getElementById("carta");
+
+    if (carta.style.display === "block") {
+        carta.style.display = "none";
+    } else {
+        carta.style.display = "block";
+    }
+
+}
+
+// REPRODUCIR Y PAUSAR MÚSICA
+
+async function reproducirMusica() {
+
+    const musica = document.getElementById("musica");
+    const boton = document.getElementById("botonMusica");
+
+    if (musica.paused) {
+
+        try {
+            await musica.play();
+            boton.innerHTML = "⏸️ Pausar música";
+        } catch (error) {
+            alert("No se pudo reproducir la música. Comprueba que musica.mp3 esté en la misma carpeta.");
+        }
+
+    } else {
+
+        musica.pause();
+        boton.innerHTML = "🎵 Reproducir música";
+
+    }
+
+}
+
+// ACTUALIZAR BOTÓN DE MÚSICA
+
+document.getElementById("musica").addEventListener("pause", function() {
+    document.getElementById("botonMusica").innerHTML = "🎵 Reproducir música";
+});
+
+document.getElementById("musica").addEventListener("play", function() {
+    document.getElementById("botonMusica").innerHTML = "⏸️ Pausar música";
+});
+
+// CORAZONES FLOTANTES
+
+function crearCorazon() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML = Math.random() > 0.5
+        ? "💗"
+        : "💕";
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 10000);
+
+}
+
+setInterval(crearCorazon, 700);
+
+</script>
+
+</body>
+</html>
